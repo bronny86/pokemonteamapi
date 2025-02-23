@@ -1,0 +1,25 @@
+{
+  "name": "pokemonteamapi",
+  "version": "1.0.0",
+  "description": "API to build and manage Pokemon teams",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed": "node src/utils/seed.js",
+    "wipe": "node src/utils/wipe.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bronny86/pokemonteamapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bronny86/pokemonteamapi/issues"
+  },
+  "homepage": "https://github.com/bronny86/pokemonteamapi#readme"
+}
