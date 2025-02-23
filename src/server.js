@@ -13,6 +13,16 @@ app.get("/", (request, response) => {
 });
 
 
+// Wildcard * means match any route
+// put this at the end of route declarations
+// to catch any routes that are not matched
+app.get("*", (request, response) => {
+    console.log("User tried to visit " + request.path);
+    response.json({
+        message: "Page not found",
+        attemptedPath: request.path
+    });
+});
 
 module.exports = {
     app
