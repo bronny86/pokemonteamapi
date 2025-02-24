@@ -13,8 +13,12 @@ app.get("/", (request, response) => {
     });
 });
 
+
+
 const {PokeApiRouter} = require("./controllers/PokeApiController.js");
 app.use("/pokeapi", PokeApiRouter);
+
+
 
 // Wildcard * means match any route
 // put this at the end of route declarations
