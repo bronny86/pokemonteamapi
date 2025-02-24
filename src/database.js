@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
 const { UserModel } = require("./models/UserModel");
+const { TeamModel } = require("./models/TeamModel");
 
 // connect to the database
 async function connect(databaseURL){
