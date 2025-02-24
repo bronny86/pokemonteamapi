@@ -3,6 +3,7 @@
 
 const express = require("express");
 
+
 // create instance of express system
 const app = express();
 
@@ -12,6 +13,8 @@ app.get("/", (request, response) => {
     });
 });
 
+const {PokeApiRouter} = require("./controllers/PokeApiController.js");
+app.use("/pokeapi", PokeApiRouter);
 
 // Wildcard * means match any route
 // put this at the end of route declarations
@@ -30,7 +33,7 @@ app.use((error, request, response, next) => {
     console.log("Error occured in the server.");
     console.log(JSON.stringify(error));
     response.json({
-        errors: request.body.errors,
+        errors: request.body?.errors,
         message: error.message
     });
 });
