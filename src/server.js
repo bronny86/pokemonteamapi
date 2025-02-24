@@ -7,11 +7,43 @@ const express = require("express");
 // create instance of express system
 const app = express();
 
+const mongoose = require("mongoose");
+
+let databaseUrl = "";
+switch (process.env.NODE_ENV?.toLocaleLowerCase()){
+    case "test":
+        databaseUrl = "mongodb://localhost:27017/PokemonTeamBuilder-test";
+        break;
+
+    case "dev":
+    case "development":
+        databaseUrl = "mongodb://localhost:27017/PokemonTeamBuilder-dev";
+        break;
+
+    case "production":
+    case "prod":
+        // this should match a variable in the .env or in the deployment platform
+        // so it knows where to find MongoDB Cloud Atlas
+        databaseUrl = process.env.DATABASE_URL;
+        break;
+
+    default:
+        console.error("Incorrect environment detected!");
+        process.exit();
+        // break;
+}
+
+// after figuring out the database url connect to the DB
+const { connect } = require("./database.js");
+connect(databaseUrl);
+
 app.get("/", (request, response) => {
     response.json({
         message: "Hello, World!"  
     });
 });
+
+
 
 
 
