@@ -35,10 +35,13 @@ router.post(
     "/", // route path
   
     async (request, response) => { // route final callback
+
     
-        let newTeam = await TeamModel.create(request.body.teamData)
+       let newTeam = await TeamModel.create(request.body.teamData)
 
     response.json({
+        // requestBody: request.body,
+        team: newTeam
         
     });
 });
