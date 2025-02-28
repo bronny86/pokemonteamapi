@@ -1,5 +1,5 @@
 const express = require("express");
-
+const { TeamModel } = require("../models/TeamModel.js");
 const router = express.Router();
 
 //                      team id is a mongoDB document object ID
@@ -20,10 +20,11 @@ router.get(
 
 router.get(
     "/all", // route path
-  
     async (request, response) => { // route final callback
-    
+
+        let teamData = await TeamModel.find();
     response.json({
+        data: teamData
         
     });
 });
@@ -35,6 +36,8 @@ router.post(
   
     async (request, response) => { // route final callback
     
+        let newTeam = await TeamModel.create(request.body.teamData)
+
     response.json({
         
     });

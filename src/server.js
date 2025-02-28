@@ -3,9 +3,11 @@
 
 const express = require("express");
 
-
 // create instance of express system
 const app = express();
+
+// lets us send in JSON as body data on a request
+app.use(express.json());
 
 const mongoose = require("mongoose");
 
