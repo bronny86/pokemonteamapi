@@ -1,6 +1,7 @@
 const express = require("express");
 const { TeamModel } = require("../models/TeamModel.js");
 const { getPokemonData} = require("../middleware/getPokemonData.js");
+const { makeTeam } = require("../middleware/makeTeam.js");
 const router = express.Router();
 
 //                      team id is a mongoDB document object ID
@@ -53,16 +54,17 @@ router.post(
     "/", // route path
 
     getPokemonData,
+    makeTeam,
   
     async (request, response) => { // route final callback
         console.log(request.customData.retrievedPokemon.length);
 
     
-       let newTeam = await TeamModel.create(request.body.teamData)
+       // let newTeam = await TeamModel.create(request.body.teamData)
 
     response.json({
         // requestBody: request.body,
-        team: newTeam
+        team: request.customData.newTeam
         
     });
 });
